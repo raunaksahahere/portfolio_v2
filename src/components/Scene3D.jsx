@@ -213,7 +213,7 @@ function SceneInner({ projects, onProjectClick, scrollY, isMobile }) {
       <OrbitRing radius={10} speed={-0.015} color="#22c55e" opacity={0.03} tilt={-0.02} />
 
       {projects.map((p, i) => {
-        const orbitRadius = 4 + i * 1.2
+        const orbitRadius = 6 + i * 1.5
         const orbitSpeed = (0.15 + Math.sin(i * 1.7) * 0.03) / (i * 0.4 + 1)
         const startAngle = (i / projects.length) * Math.PI * 2
         const orbitTilt = (i % 2 === 0 ? 1 : -1) * (0.02 + i * 0.01)

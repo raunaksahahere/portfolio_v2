@@ -102,7 +102,6 @@ export const STATS = [
   { label: 'Projects', value: PROJECTS.length, suffix: '+' },
   { label: 'Years Exp', value: 2, suffix: '+' },
   { label: 'Skill Domains', value: SKILLS.length, suffix: '' },
-  { label: 'Achievements', value: ACHIEVEMENTS.length, suffix: '+' },
 ]
 
 export const TAGLINES = [
