@@ -244,12 +244,13 @@ export default function Scene3D({ projects, onProjectClick, scrollY = 0 }) {
   const isMobile = useIsMobile()
 
   return (
-    <div className="canvas-container">
+    <div className="canvas-container" role="img" aria-label="3D interactive scene">
       <Canvas
         camera={{ position: [0, 5, 14], fov: 60 }}
         gl={{ antialias: !isMobile, alpha: true }}
         dpr={isMobile ? 1 : [1, 2]}
         style={{ background: '#050505' }}
+        tabIndex={-1}
       >
         <SceneInner projects={projects} onProjectClick={onProjectClick} scrollY={scrollY} isMobile={isMobile} />
       </Canvas>
