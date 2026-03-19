@@ -66,6 +66,7 @@ export const PROJECTS = [
     techs: ['React', 'Custom JS Engine', 'Code Visualization'],
     gh: 'https://github.com/raunaksahahere/codelens',
     color: '#ff0000',
+    live: 'https://codelens-ide.vercel.app/',
   },
   {
     title: 'Smart Campus Reporter',
