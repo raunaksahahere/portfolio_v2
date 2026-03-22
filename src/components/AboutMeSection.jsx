@@ -48,7 +48,6 @@ export default function AboutMeSection() {
         <h2 className="section-heading">The Person Behind the Code</h2>
 
         <div className="aboutme-grid">
-          {/* Photos Column */}
           <div className="aboutme-photos">
             <div
               className="aboutme-photo-frame aboutme-photo-frame--tall"
@@ -60,13 +59,11 @@ export default function AboutMeSection() {
             </div>
           </div>
 
-          {/* Bio Panel — Code Editor Style */}
           <div
             className="aboutme-bio-panel"
             ref={bioRef}
             style={{ opacity: 0, transform: 'translateY(30px)' }}
           >
-            {/* Terminal dots */}
             <div className="aboutme-terminal-header">
               <span className="dot dot--red" />
               <span className="dot dot--yellow" />
@@ -79,7 +76,6 @@ export default function AboutMeSection() {
               <p className="aboutme-title">{PROFILE.title}</p>
               <p className="aboutme-bio-text">{PROFILE.bio}</p>
 
-              {/* Stats Grid */}
               <div className="aboutme-stats-grid">
                 {stats.map((s, i) => (
                   <div key={i} className="aboutme-stat">
@@ -89,7 +85,6 @@ export default function AboutMeSection() {
                 ))}
               </div>
 
-              {/* Skill Tags */}
               <div className="aboutme-skill-tags">
                 {topSkills.map((skill, i) => (
                   <span key={i} className="aboutme-skill-tag">
@@ -98,7 +93,6 @@ export default function AboutMeSection() {
                 ))}
               </div>
 
-              {/* Fun Facts */}
               <div className="aboutme-funfacts">
                 <span className="aboutme-funfacts__label">// fun facts</span>
                 <div className="aboutme-funfacts-grid">
@@ -111,7 +105,6 @@ export default function AboutMeSection() {
                 </div>
               </div>
 
-              {/* Achievements highlight */}
               <div className="aboutme-highlights">
                 <span className="aboutme-highlights__label">// key achievements</span>
                 {ACHIEVEMENTS.slice(0, 3).map((a, i) => (

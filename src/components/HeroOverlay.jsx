@@ -38,7 +38,6 @@ export default function HeroOverlay({ onNameHover, fadeRef }) {
   const [taglineText, setTaglineText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
 
-  // GSAP entrance animations
   useEffect(() => {
     const tl = gsap.timeline({ delay: 0.3 })
     tl.to(nameRef.current, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' })
@@ -49,7 +48,6 @@ export default function HeroOverlay({ onNameHover, fadeRef }) {
     return () => tl.kill()
   }, [])
 
-  // Typewriter effect
   useEffect(() => {
     const current = TAGLINES[taglineIndex]
     let timeout
@@ -68,7 +66,6 @@ export default function HeroOverlay({ onNameHover, fadeRef }) {
     return () => clearTimeout(timeout)
   }, [taglineText, isDeleting, taglineIndex])
 
-  // Native listeners to bypass R3F event interception
   useEffect(() => {
     const el = nameRef.current
     if (!el) return

@@ -13,7 +13,6 @@ export default function TechSidebar() {
         { opacity: 1, x: 0, duration: 0.4, stagger: 0.06, delay: 1, ease: 'power2.out' }
       )
     }
-    // Animate title
     const title = ref.current?.querySelector('.sidebar__title')
     if (title) {
       gsap.fromTo(title, { opacity: 0 }, { opacity: 1, duration: 0.6, delay: 0.8 })

@@ -18,7 +18,6 @@ export default function Loader({ onComplete }) {
       },
     })
 
-    // Show progress bar
     tl.to(progressRef.current, { opacity: 1, duration: 0.3 }, 0)
 
     const lines = ref.current?.querySelectorAll('.loader__line')
@@ -32,7 +31,6 @@ export default function Loader({ onComplete }) {
 
       tl.to(outputEl, { opacity: 1, y: 0, duration: 0.2, ease: 'power2.out', delay: 0.2 })
 
-      // Update progress bar + percentage
       const progress = ((i + 1) / LOADER_LINES.length) * 100
       tl.to(
         progressRef.current?.querySelector('.loader__progress-bar'),

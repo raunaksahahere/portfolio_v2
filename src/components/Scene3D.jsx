@@ -15,7 +15,6 @@ function useIsMobile() {
   return isMobile
 }
 
-/* ── Particles floating in space — gold, cyan, pink, white ── */
 function ParticleField({ isMobile }) {
   const count = isMobile ? 800 : 2500
   const ref = useRef()
@@ -55,7 +54,6 @@ function ParticleField({ isMobile }) {
   )
 }
 
-/* ── Center Among Us — replaces the Sun ── */
 function CenterAmongUs() {
   const groupRef = useRef()
 
@@ -76,7 +74,6 @@ function CenterAmongUs() {
   )
 }
 
-/* ── Orbit ring ── */
 function OrbitRing({ radius, speed, color, opacity, tilt = 0 }) {
   const ref = useRef()
   useFrame((state) => {
@@ -90,7 +87,6 @@ function OrbitRing({ radius, speed, color, opacity, tilt = 0 }) {
   )
 }
 
-/* ── Project Planet — orbits the sun ── */
 function ProjectPlanet({ project, orbitRadius, orbitSpeed, startAngle, orbitTilt, bobSpeed, bobHeight, onProjectClick }) {
   const groupRef = useRef()
   const meshRef = useRef()
@@ -157,7 +153,6 @@ function ProjectPlanet({ project, orbitRadius, orbitSpeed, startAngle, orbitTilt
   )
 }
 
-/* ── Auto-orbiting camera with scroll parallax ── */
 function CameraRig({ scrollY = 0 }) {
   const { camera } = useThree()
   const scrollRef = useRef(0)
@@ -180,7 +175,6 @@ function CameraRig({ scrollY = 0 }) {
   return null
 }
 
-/* ── Roaming Among Us ── */
 function RoamingAmongUs({ orbitRadius, orbitSpeed, startAngle, scale, color, yOffset }) {
   const groupRef = useRef()
 
@@ -201,7 +195,6 @@ function RoamingAmongUs({ orbitRadius, orbitSpeed, startAngle, scale, color, yOf
   )
 }
 
-/* ── Inner scene ── */
 function SceneInner({ projects, onProjectClick, scrollY, isMobile }) {
   const orbitConfigs = useMemo(() => {
     return projects.map((_, i) => ({
@@ -222,7 +215,6 @@ function SceneInner({ projects, onProjectClick, scrollY, isMobile }) {
       <ParticleField isMobile={isMobile} />
       <Stars radius={40} depth={30} count={isMobile ? 1500 : 4000} factor={3} saturation={0} fade speed={0.3} />
 
-      {/* Orbit rings */}
       {projects.map((_, i) => (
         <OrbitRing
           key={`ring-${i}`}
@@ -234,7 +226,6 @@ function SceneInner({ projects, onProjectClick, scrollY, isMobile }) {
         />
       ))}
 
-      {/* Project planets */}
       {projects.map((project, i) => (
         <ProjectPlanet
           key={project.id}
@@ -258,7 +249,6 @@ function SceneInner({ projects, onProjectClick, scrollY, isMobile }) {
   )
 }
 
-/* ── Main Scene Component ── */
 export default function Scene3D({ projects, onProjectClick, scrollY = 0 }) {
   const isMobile = useIsMobile()
 

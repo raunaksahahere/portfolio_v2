@@ -9,7 +9,6 @@ export default function CustomCursor() {
   const TRAIL_COUNT = 6
 
   useEffect(() => {
-    // Initialize trail positions
     trailCoords.current = Array(TRAIL_COUNT).fill({ x: -100, y: -100 })
 
     const handleMouseMove = (e) => {
@@ -49,7 +48,6 @@ export default function CustomCursor() {
       if (dotRef.current) {
         dotRef.current.style.transform = `translate(${coords.current.x}px, ${coords.current.y}px)`
       }
-      // Trail follows with delay
       trailCoords.current.forEach((_, i) => {
         const prev = i === 0 ? coords.current : trailCoords.current[i - 1]
         trailCoords.current[i] = {
@@ -74,7 +72,6 @@ export default function CustomCursor() {
     }
   }, [])
 
-  // Hide on touch devices
   if (typeof window !== 'undefined' && 'ontouchstart' in window) return null
 
   return (

@@ -9,7 +9,6 @@ export default function Controls() {
       { opacity: 0, y: 10 },
       { opacity: 1, y: 0, duration: 0.8, delay: 2, ease: 'power2.out' }
     )
-    // Fade out after 6 seconds
     gsap.to(ref.current, { opacity: 0.3, duration: 1, delay: 8 })
   }, [])
 

@@ -1,7 +1,4 @@
-/* ══════════════════════════════════════════════
-   RAUNAK SAHA — PORTFOLIO V2
-   Global Styles
-   ══════════════════════════════════════════════ */
+
 
 :root {
   --bg: #0d0e13;
@@ -70,14 +67,9 @@ button {
   cursor: pointer;
 }
 
-/* ── SCROLLBAR ── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-
-/* ══════════════════════════════════════════════
-   LOADER — Terminal Boot Sequence
-   ══════════════════════════════════════════════ */
 
 .loader {
   position: fixed;
@@ -168,7 +160,6 @@ button {
   transition: width 0.3s ease;
 }
 
-/* Glitch transition */
 .loader.glitch {
   animation: loaderGlitch 0.5s ease-in forwards;
 }
@@ -182,10 +173,6 @@ button {
   100% { transform: translate(0) scale(1.02); filter: brightness(5); opacity: 0; }
 }
 
-/* ══════════════════════════════════════════════
-   CANVAS — Three.js WebGL
-   ══════════════════════════════════════════════ */
-
 .canvas-container {
   position: absolute;
   inset: 0;
@@ -196,10 +183,6 @@ button {
 .canvas-container canvas {
   pointer-events: auto;
 }
-
-/* ══════════════════════════════════════════════
-   HERO OVERLAY — Name & Title over 3D scene
-   ══════════════════════════════════════════════ */
 
 .hero {
   position: absolute;
@@ -306,10 +289,6 @@ button {
   50% { transform: translateY(6px); }
 }
 
-/* ══════════════════════════════════════════════
-   SOCIAL LINKS — Corner-pinned
-   ══════════════════════════════════════════════ */
-
 .social-links {
   position: fixed;
   z-index: 50;
@@ -349,10 +328,6 @@ button {
   writing-mode: vertical-rl;
 }
 
-/* ══════════════════════════════════════════════
-   MENU BUTTON — Toggle
-   ══════════════════════════════════════════════ */
-
 .menu-toggle {
   position: fixed;
   top: 2rem;
@@ -377,10 +352,6 @@ button {
   border-color: var(--cyan);
   box-shadow: var(--glow-cyan);
 }
-
-/* ══════════════════════════════════════════════
-   MENU — Full-screen Overlay
-   ══════════════════════════════════════════════ */
 
 .menu {
   position: fixed;
@@ -573,10 +544,6 @@ button {
   box-shadow: var(--glow-cyan);
 }
 
-/* ══════════════════════════════════════════════
-   PROJECT DETAIL — Overlay Panel
-   ══════════════════════════════════════════════ */
-
 .project-detail {
   position: fixed;
   inset: 0;
@@ -698,10 +665,6 @@ button {
   transform: translateY(-2px);
 }
 
-/* ══════════════════════════════════════════════
-   PROJECT CARDS — Floating HTML cards (fallback / about section)
-   ══════════════════════════════════════════════ */
-
 .projects-section {
   position: fixed;
   bottom: 2rem;
@@ -772,10 +735,6 @@ button {
   overflow: hidden;
 }
 
-/* ══════════════════════════════════════════════
-   ABOUT TRIGGER BUTTON
-   ══════════════════════════════════════════════ */
-
 .about-trigger {
   position: fixed;
   top: 1rem;
@@ -803,10 +762,6 @@ button {
   box-shadow: 0 0 15px rgba(0,245,255,0.15);
 }
 
-/* ══════════════════════════════════════════════
-   ABOUT PANEL CLOSE BUTTON
-   ══════════════════════════════════════════════ */
-
 .about-panel__close {
   position: absolute;
   top: 1rem;
@@ -831,10 +786,6 @@ button {
   color: #ff4444;
 }
 
-/* ══════════════════════════════════════════════
-   PLANET LABELS — 3D scene HTML overlays
-   ══════════════════════════════════════════════ */
-
 .planet-label {
   font-family: var(--font-mono);
   font-size: 0.55rem;
@@ -855,10 +806,6 @@ button {
   font-size: 0.8rem;
   text-shadow: 0 0 10px var(--cyan);
 }
-
-/* ══════════════════════════════════════════════
-   TECH SIDEBAR — Always visible left HUD
-   ══════════════════════════════════════════════ */
 
 .sidebar {
   position: fixed;
@@ -950,10 +897,6 @@ button {
   color: var(--cyan);
   border-color: rgba(0,245,255,0.15);
 }
-
-/* ══════════════════════════════════════════════
-   ABOUT PANEL — Proximity-triggered center overlay
-   ══════════════════════════════════════════════ */
 
 .about-panel {
   position: fixed;
@@ -1120,10 +1063,6 @@ button {
   box-shadow: 0 0 12px rgba(0,245,255,0.15);
 }
 
-/* ══════════════════════════════════════════════
-   GITHUB COMMIT — Bottom-right corner
-   ══════════════════════════════════════════════ */
-
 .github-commit {
   position: fixed;
   bottom: 1.5rem;
@@ -1188,10 +1127,6 @@ button {
   border-radius: 3px;
 }
 
-/* ══════════════════════════════════════════════
-   CONTROLS HINT — Bottom center
-   ══════════════════════════════════════════════ */
-
 .controls-hint {
   position: fixed;
   bottom: 2rem;
@@ -1244,10 +1179,6 @@ button {
   color: var(--text-dim);
 }
 
-/* ══════════════════════════════════════════════
-   HOVERED PROJECT TOOLTIP
-   ══════════════════════════════════════════════ */
-
 .hovered-project {
   position: fixed;
   top: 50%;
@@ -1290,10 +1221,6 @@ button {
   font-size: 0.6rem;
   color: var(--text-muted);
 }
-
-/* ══════════════════════════════════════════════
-   SCROLLABLE PAGE LAYOUT
-   ══════════════════════════════════════════════ */
 
 .page {
   width: 100%;
@@ -1347,7 +1274,6 @@ button {
   50% { transform: translateY(6px); }
 }
 
-/* ── Section base ── */
 .page__section {
   position: relative;
   padding: 6rem 2rem;
@@ -1363,7 +1289,7 @@ button {
   transform: translateY(0);
 }
 
-.scroll-section { /* marker class for observer */ }
+.scroll-section {}
 
 .section-container {
   width: 100%;
@@ -1388,7 +1314,6 @@ button {
   line-height: 1.2;
 }
 
-/* ── Skills Grid ── */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -1406,7 +1331,6 @@ button {
   overflow: hidden;
 }
 
-/* Code-editor dots header */
 .skill-card::before {
   content: '● ● ●';
   position: absolute;
@@ -1421,7 +1345,6 @@ button {
   opacity: 0.7;
 }
 
-/* Holographic scan hover */
 .skill-card::after {
   content: '';
   position: absolute;
@@ -1476,7 +1399,6 @@ button {
   border-color: rgba(255, 215, 0, 0.2);
 }
 
-/* ── Projects Grid ── */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -1495,7 +1417,6 @@ button {
   overflow: hidden;
 }
 
-/* Holographic scan sweep on project cards */
 .project-grid-card::after {
   content: '';
   position: absolute;
@@ -1563,7 +1484,6 @@ button {
   border: 1px solid rgba(255,255,255,0.06);
 }
 
-/* ── Achievements Grid ── */
 .achievements-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -1605,7 +1525,6 @@ button {
   line-height: 1.5;
 }
 
-/* ── GitHub Section (in-page) ── */
 .github-section {
   max-width: 400px;
 }
@@ -1615,7 +1534,6 @@ button {
   max-width: none;
 }
 
-/* ── Contact Section ── */
 .contact-desc {
   font-size: 1.1rem;
   color: var(--text-dim);
@@ -1655,10 +1573,6 @@ button {
 .contact-link__icon {
   font-size: 1.2rem;
 }
-
-/* ══════════════════════════════════════════════
-   FOOTER
-   ══════════════════════════════════════════════ */
 
 .footer {
   border-top: 1px solid var(--border);
@@ -1723,15 +1637,10 @@ button {
   opacity: 0.6;
 }
 
-/* ══════════════════════════════════════════════
-   RESPONSIVE
-   ══════════════════════════════════════════════ */
-
 @media (max-width: 768px) {
-  /* ── Loader ── */
+
   .loader { padding: 8vw 6vw; }
 
-  /* ── Hero ── */
   .hero__name { font-size: 2.2rem; }
   .hero__title { font-size: 0.75rem; letter-spacing: 0.08em; }
   .hero__available { font-size: 0.7rem; padding: 5px 14px; margin-top: 1rem; }
@@ -1740,37 +1649,30 @@ button {
   .hero__stat-value { font-size: 1.2rem; }
   .hero__stat-label { font-size: 0.55rem; }
 
-  /* ── Scroll Indicator ── */
   .scroll-indicator { bottom: 1.5rem; font-size: 0.7rem; }
 
-  /* ── Sections ── */
   .page__section { padding: 4rem 1.5rem; }
   .section-label { font-size: 0.7rem; }
   .section-heading { font-size: 1.8rem; margin-bottom: 2rem; }
 
-  /* ── Skills Grid — 2 columns on tablet ── */
   .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
   .skill-card { padding: 1.2rem; }
   .skill-card__icon { font-size: 1.4rem; }
   .skill-card__name { font-size: 0.95rem; }
   .skill-card__tech { font-size: 0.7rem; padding: 3px 8px; }
 
-  /* ── Projects Grid — stack on mobile ── */
   .projects-grid { grid-template-columns: 1fr; gap: 1rem; }
   .project-grid-card { padding: 1.4rem; }
   .project-grid-card__title { font-size: 1.15rem; }
   .project-grid-card__desc { font-size: 0.85rem; }
 
-  /* ── Achievements ── */
   .achievements-grid { grid-template-columns: 1fr; gap: 0.8rem; }
   .achievement-card { padding: 1.2rem; }
 
-  /* ── Contact ── */
   .contact-desc { font-size: 0.95rem; }
   .contact-links { flex-direction: column; align-items: center; gap: 0.8rem; }
   .contact-link { width: 100%; max-width: 320px; justify-content: center; padding: 14px 24px; }
 
-  /* ── About Panel — bottom sheet on mobile ── */
   .about-panel {
     top: auto; bottom: 0; right: 0; left: 0;
     width: 100vw; max-height: 80vh;
@@ -1787,7 +1689,6 @@ button {
   .about-panel__stat-label { font-size: 0.65rem; }
   .about-panel__stat-value { font-size: 0.9rem; }
 
-  /* ── Menu — full-screen stacked on mobile ── */
   .menu { flex-direction: column; }
   .menu__left { display: none; }
   .menu__right { padding: 5rem 1.5rem 2rem; gap: 0; }
@@ -1799,7 +1700,6 @@ button {
   .menu__contact-links { flex-direction: column; gap: 0.6rem; }
   .menu__contact-link { text-align: center; padding: 12px 20px; }
 
-  /* ── Menu Toggle — larger tap target ── */
   .menu-toggle {
     top: 1rem; right: 1rem;
     font-size: 0.85rem;
@@ -1808,12 +1708,10 @@ button {
     min-height: 44px;
   }
 
-  /* ── Social Links ── */
   .social-links--left { left: 1rem; bottom: 1rem; gap: 0.8rem; }
   .social-links--right { right: 1rem; bottom: 1rem; }
   .social-link { font-size: 0.65rem; }
 
-  /* ── Project Detail — full-width modal ── */
   .project-detail__card {
     padding: 1.8rem 1.5rem;
     max-width: 95vw;
@@ -1824,28 +1722,24 @@ button {
   .project-detail__close { top: 1rem; right: 1rem; }
   .project-detail__btn { padding: 10px 20px; font-size: 0.75rem; }
 
-  /* ── GitHub Commit ── */
   .github-commit {
     position: static;
     max-width: 100%;
     margin-top: 1rem;
   }
 
-  /* ── Footer ── */
   .footer { padding: 2.5rem 1.5rem; }
   .footer__inner { flex-direction: column; text-align: center; gap: 1.5rem; }
   .footer__links { justify-content: center; flex-wrap: wrap; }
   .footer__name { font-size: 1.1rem; }
 
-  /* ── Disable tilt on touch ── */
   .tilt-card { transform: none !important; }
 
-  /* ── Hide cursor on mobile ── */
   .cursor-dot, .cursor-trail { display: none !important; }
 }
 
 @media (max-width: 480px) {
-  /* ── Hero — compact for small phones ── */
+
   .hero__name { font-size: 1.8rem; }
   .hero__title { font-size: 0.65rem; letter-spacing: 0.06em; }
   .hero__available { font-size: 0.65rem; padding: 4px 12px; }
@@ -1856,19 +1750,16 @@ button {
   .back-to-top { bottom: 1rem; right: 1rem; width: 38px; height: 38px; font-size: 1rem; }
   .resume-btn { font-size: 0.75rem; padding: 10px 20px; }
 
-  /* ── Sections — tighter spacing ── */
   .page__section { padding: 3rem 1rem; }
   .section-label { font-size: 0.65rem; letter-spacing: 0.2em; }
   .section-heading { font-size: 1.4rem; margin-bottom: 1.5rem; }
 
-  /* ── Skills — 2 columns with compact cards ── */
   .skills-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
   .skill-card { padding: 1rem; }
   .skill-card__icon { font-size: 1.2rem; margin-bottom: 0.5rem; }
   .skill-card__name { font-size: 0.85rem; margin-bottom: 0.5rem; }
   .skill-card__tech { font-size: 0.6rem; padding: 2px 6px; }
 
-  /* ── Projects — full-width stacked ── */
   .project-grid-card { padding: 1.2rem; }
   .project-grid-card__accent { width: 30px; height: 3px; margin-bottom: 0.8rem; }
   .project-grid-card__tag { font-size: 0.6rem; }
@@ -1876,43 +1767,33 @@ button {
   .project-grid-card__desc { font-size: 0.8rem; line-height: 1.5; }
   .project-grid-card__techs span { font-size: 0.6rem; padding: 2px 8px; }
 
-  /* ── Achievements — compact ── */
   .achievement-card { padding: 1rem; gap: 0.8rem; }
   .achievement-card__icon { font-size: 1.2rem; }
   .achievement-card__title { font-size: 0.9rem; }
   .achievement-card__desc { font-size: 0.8rem; }
 
-  /* ── About Panel — bottom sheet ── */
   .about-panel { max-height: 75vh; }
   .about-panel__inner { padding: 1.5rem 1.2rem; }
   .about-panel__grid { grid-template-columns: 1fr; }
   .about-panel__section p { font-size: 0.85rem; }
 
-  /* ── Menu — compact nav ── */
   .menu__right { padding: 4rem 1.2rem 2rem; }
   .menu__nav-link { font-size: 1.4rem; }
   .menu-toggle { padding: 8px 14px; font-size: 0.75rem; }
 
-  /* ── Project Detail — nearly full screen ── */
   .project-detail__card { padding: 1.4rem 1.2rem; max-width: 100vw; border-radius: 12px; }
   .project-detail__title { font-size: 1.2rem; }
   .project-detail__techs { gap: 6px; }
   .project-detail__tech { font-size: 0.6rem; padding: 3px 8px; }
 
-  /* ── Contact ── */
   .contact-desc { font-size: 0.85rem; margin-bottom: 2rem; }
   .contact-link { font-size: 0.9rem; padding: 12px 20px; }
 
-  /* ── Footer ── */
   .footer { padding: 2rem 1rem; }
   .footer__link { font-size: 0.7rem; }
   .footer__copy { font-size: 0.65rem; }
   .footer__built { font-size: 0.6rem; }
 }
-
-/* ══════════════════════════════════════════════
-   CUSTOM CURSOR — Glowing neon dot with trail
-   ══════════════════════════════════════════════ */
 
 .cursor-dot {
   position: fixed;
@@ -1964,30 +1845,20 @@ button {
   mix-blend-mode: screen;
 }
 
-/* Hide custom cursor on touch devices and when default cursor is needed */
 @media (hover: none), (pointer: coarse) {
   .cursor-dot, .cursor-trail { display: none !important; }
 }
 
-/* Hide default cursor when custom cursor is active */
 @media (hover: hover) and (pointer: fine) {
   *, *::before, *::after {
     cursor: none !important;
   }
 }
 
-/* ══════════════════════════════════════════════
-   TILT CARD EFFECT
-   ══════════════════════════════════════════════ */
-
 .tilt-card {
   transition: transform 0.15s ease-out, border-color 0.4s, box-shadow 0.4s;
   transform-style: preserve-3d;
 }
-
-/* ══════════════════════════════════════════════
-   ENHANCED STAGGER ANIMATIONS (children start hidden)
-   ══════════════════════════════════════════════ */
 
 .scroll-section .skill-card,
 .scroll-section .project-grid-card,
@@ -1995,10 +1866,6 @@ button {
 .scroll-section .contact-link {
   opacity: 0;
 }
-
-/* ══════════════════════════════════════════════
-   HERO TAGLINE — Typing effect
-   ══════════════════════════════════════════════ */
 
 .hero__tagline {
   font-family: var(--font-mono);
@@ -2020,10 +1887,6 @@ button {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
-
-/* ══════════════════════════════════════════════
-   HERO STATS — Animated counters
-   ══════════════════════════════════════════════ */
 
 .hero__stats {
   display: flex;
@@ -2056,10 +1919,6 @@ button {
   text-transform: uppercase;
 }
 
-/* ══════════════════════════════════════════════
-   SECTION DIVIDERS — Glassmorphic
-   ══════════════════════════════════════════════ */
-
 .section-divider {
   width: 100%;
   max-width: 600px;
@@ -2085,10 +1944,6 @@ button {
   filter: blur(8px);
   opacity: 0.5;
 }
-
-/* ══════════════════════════════════════════════
-   BACK TO TOP BUTTON
-   ══════════════════════════════════════════════ */
 
 .back-to-top {
   position: fixed;
@@ -2125,10 +1980,6 @@ button {
   transform: translateY(-2px);
 }
 
-/* ══════════════════════════════════════════════
-   RESUME DOWNLOAD BUTTON
-   ══════════════════════════════════════════════ */
-
 .resume-btn {
   display: inline-flex;
   align-items: center;
@@ -2153,10 +2004,6 @@ button {
   transform: translateY(-2px);
 }
 
-/* ══════════════════════════════════════════════
-   VIEW LIVE BUTTON — Project detail
-   ══════════════════════════════════════════════ */
-
 .project-detail__btn--live {
   background: transparent;
   color: var(--green);
@@ -2169,10 +2016,6 @@ button {
   transform: translateY(-2px);
 }
 
-/* ══════════════════════════════════════════════
-   LOADER PERCENTAGE
-   ══════════════════════════════════════════════ */
-
 .loader__percent {
   display: block;
   text-align: right;
@@ -2183,15 +2026,10 @@ button {
   letter-spacing: 0.1em;
 }
 
-/* ══════════════════════════════════════════════
-   ABOUT ME SECTION — Celestial Command Bio
-   ══════════════════════════════════════════════ */
-
 .aboutme-section {
   position: relative;
 }
 
-/* Atmospheric glow behind section */
 .aboutme-section::before {
   content: '';
   position: absolute;
@@ -2213,7 +2051,6 @@ button {
   align-items: end;
 }
 
-/* ── Photo Column ── */
 .aboutme-photos {
   display: flex;
   flex-direction: column;
@@ -2260,7 +2097,6 @@ button {
   pointer-events: none;
 }
 
-/* ── Bio Panel — Terminal Style ── */
 .aboutme-bio-panel {
   background: rgba(26, 27, 33, 0.6);
   backdrop-filter: blur(20px);
@@ -2274,7 +2110,6 @@ button {
   height: 100%;
 }
 
-/* Holographic scan sweep */
 .aboutme-bio-panel::after {
   content: '';
   position: absolute;
@@ -2354,7 +2189,6 @@ button {
   font-family: var(--font-mono);
 }
 
-/* ── Stats Grid ── */
 .aboutme-stats-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -2391,7 +2225,6 @@ button {
   color: var(--text);
 }
 
-/* ── Skill Tags ── */
 .aboutme-skill-tags {
   display: flex;
   flex-wrap: wrap;
@@ -2417,7 +2250,6 @@ button {
   background: rgba(255, 215, 0, 0.08);
 }
 
-/* ── Inline Photo in Bio Panel ── */
 .aboutme-inline-photo {
   flex: none;
   height: 180px;
@@ -2441,7 +2273,6 @@ button {
   transform: scale(1.02);
 }
 
-/* ── Fun Facts ── */
 .aboutme-funfacts {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
@@ -2488,7 +2319,6 @@ button {
   color: var(--text-dim);
 }
 
-/* ── Achievement Highlights ── */
 .aboutme-highlights {
   border-top: 1px solid rgba(255, 215, 0, 0.06);
   padding-top: 1.2rem;
@@ -2517,7 +2347,6 @@ button {
   font-size: 1.2rem;
 }
 
-/* ── Responsive ── */
 @media (max-width: 768px) {
   .aboutme-grid {
     grid-template-columns: 1fr;

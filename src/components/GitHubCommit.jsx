@@ -7,7 +7,6 @@ export default function GitHubCommit({ username }) {
   useEffect(() => {
     if (!username) return
 
-    // Try events API first
     fetch(`https://api.github.com/users/${username}/events/public?per_page=30`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
@@ -34,7 +33,6 @@ export default function GitHubCommit({ username }) {
             sha: latestCommit.sha.slice(0, 7),
           })
         } else {
-          // Fallback: fetch latest repo activity
           return fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=1`)
             .then((r) => r.json())
             .then((repos) => {

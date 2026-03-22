@@ -34,7 +34,6 @@ export default function App() {
     }
   }, [loading])
 
-  // Track scroll position for 3D parallax + hero fade + back-to-top
   useEffect(() => {
     if (loading) return
     const handleScroll = () => {
@@ -42,7 +41,6 @@ export default function App() {
       setScrollY(y)
       setShowBackToTop(y > window.innerHeight * 0.8)
 
-      // Fade hero content as user scrolls (don't start until 15% scrolled)
       if (heroContentRef.current) {
         const scrollStart = window.innerHeight * 0.15
         const scrollEnd = window.innerHeight * 0.7
@@ -54,7 +52,6 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [loading])
 
-  // Enhanced scroll-triggered animations with GSAP stagger
   useEffect(() => {
     if (loading || !sectionsRef.current) return
     const observer = new IntersectionObserver(
@@ -62,7 +59,6 @@ export default function App() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible')
-            // Stagger children within the section
             const children = entry.target.querySelectorAll(
               '.skill-card, .project-grid-card, .achievement-card, .contact-link'
             )
@@ -103,7 +99,6 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKey)
   }, [menuOpen, selectedProject, aboutOpen])
 
-  // Card tilt handler
   const handleCardTilt = (e) => {
     const card = e.currentTarget
     const rect = card.getBoundingClientRect()
@@ -128,7 +123,6 @@ export default function App() {
 
       {!loading && (
         <div className="page" ref={sectionsRef}>
-          {/* ── SECTION 1: Hero (3D scene + name) ── */}
           <section className="page__hero">
             <Scene3D projects={PROJECTS} onProjectClick={setSelectedProject} scrollY={scrollY} />
             <HeroOverlay onNameHover={(v) => setAboutOpen(v)} fadeRef={heroContentRef} />
@@ -140,7 +134,6 @@ export default function App() {
 
           <div className="section-divider" />
 
-          {/* ── SECTION 1.5: About Me ── */}
           <AboutMeSection />
 
           <div className="section-divider" />
@@ -171,7 +164,6 @@ export default function App() {
 
           <div className="section-divider" />
 
-          {/* ── SECTION 3: Projects ── */}
           <section className="page__section scroll-section" id="projects">
             <div className="section-container">
               <div className="section-label">PROJECTS</div>
@@ -204,7 +196,6 @@ export default function App() {
 
           <div className="section-divider" />
 
-          {/* ── SECTION 4: Achievements & GitHub ── */}
           <section className="page__section scroll-section" id="achievements">
             <div className="section-container">
               <div className="section-label">ACHIEVEMENTS</div>
@@ -229,7 +220,6 @@ export default function App() {
 
           <div className="section-divider" />
 
-          {/* ── SECTION 5: Contact ── */}
           <section className="page__section scroll-section" id="contact">
             <div className="section-container section-container--center">
               <div className="section-label">CONTACT</div>
@@ -255,12 +245,10 @@ export default function App() {
             </div>
           </section>
 
-          {/* ── Footer ── */}
           <Footer />
         </div>
       )}
 
-      {/* Fixed overlays */}
       {!loading && <SocialLinks />}
 
       {!loading && (
@@ -292,7 +280,6 @@ export default function App() {
         onClose={() => setSelectedProject(null)}
       />
 
-      {/* Back to top */}
       <button
         className={`back-to-top ${showBackToTop ? 'visible' : ''}`}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
