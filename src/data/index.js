@@ -1,9 +1,9 @@
 export const PROFILE = {
   name: 'Raunak Saha',
-  title: 'Full-Stack Developer & Language Creator & Game Dev',
-  tagline: 'Code is the new civilization.',
-  subtitle: 'From ancient scrolls to modern programming languages.',
-  bio: `I'm an 18-year-old Full-Stack Developer, Language Creator & Game Developer based in Kolkata, India with 2 years of hands-on experience. Currently pursuing B.Tech in AI & Data Science at Meghnad Saha Institute of Technology. I created the B# programming language from scratch — complete with its own interpreter, package manager, and VS Code extension.`,
+  title: 'Frontend & Full Stack Engineer · UI/UX · Game Dev · Language Creator',
+  tagline: 'Architecting the Frontend Universe.',
+  subtitle: 'Where code meets cosmos.',
+  bio: `I'm an 18-year-old Frontend & Full Stack Engineer, UI/UX Designer, Game Developer & Language Creator based in Kolkata, India with 2 years of hands-on experience. Currently pursuing B.Tech in AI & Data Science at Meghnad Saha Institute of Technology. I created the B# programming language from scratch — complete with its own interpreter, package manager, and VS Code extension.`,
   available: true,
   age: 18,
   location: 'Kolkata, India',
@@ -14,14 +14,14 @@ export const PROFILE = {
 }
 
 export const SKILLS = [
+  { name: 'Frontend', icon: '🌐', techs: ['React', 'Next.js', 'TypeScript', 'Tailwind'] },
+  { name: 'UI/UX Design', icon: '🎨', techs: ['Figma', 'Prototyping', 'Design Systems'] },
+  { name: 'Game Dev', icon: '🎮', techs: ['Unity', 'C#', 'Blender', 'Game Design'] },
+  { name: 'Language Design', icon: '🔤', techs: ['B# Language', 'Interpreters', 'Compilers'] },
   { name: 'AI / ML', icon: '🧠', techs: ['Python', 'TensorFlow', 'PyTorch'] },
   { name: 'Backend', icon: '⚙️', techs: ['Node.js', 'Supabase', 'PostgreSQL'] },
-  { name: 'Frontend', icon: '🌐', techs: ['React', 'Next.js', 'TypeScript', 'Tailwind'] },
   { name: 'JavaScript', icon: '⚡', techs: ['JavaScript', 'Node.js', 'React'] },
-  { name: 'Language Design', icon: '🔤', techs: ['B# Language', 'Interpreters', 'Compilers'] },
-  { name: 'Game Dev', icon: '🎮', techs: ['Unity', 'C#', 'Blender', 'Game Design'] },
-  { name: 'Version Control', icon: '📦', techs: ['Git', 'GitHub', 'GitLab'] },
-  { name: 'Cloud & Infra', icon: '☁️', techs: ['Docker', 'AWS'] },
+  { name: 'Cloud & Infra', icon: '☁️', techs: ['Docker', 'AWS', 'Git'] },
 ]
 
 export const PROJECTS = [
@@ -106,15 +106,15 @@ export const STATS = [
 ]
 
 export const TAGLINES = [
-  'Code is the new civilization.',
-  'Built different.',
-  'From Kolkata to the universe.',
+  'Architecting the Frontend Universe.',
+  'Where code meets cosmos.',
   'Creating languages, not just using them.',
+  'From Kolkata to the stars.',
 ]
 
 export const LOADER_LINES = [
-  { prompt: '$ raunak init', output: 'Initializing portfolio...' },
-  { prompt: '$ raunak add .', output: `Staging ${PROJECTS.length} projects, ${SKILLS.length} skill domains, ${ACHIEVEMENTS.length} achievements...` },
-  { prompt: '$ raunak commit -m "built different"', output: '[main 1a2b3c4] built different\n 2 years of experience committed' },
-  { prompt: '$ raunak push origin world', output: 'Enumerating objects: done.\nPushing to the universe... ✓' },
+  { prompt: '$ solar.init()', output: 'Booting stellar core...' },
+  { prompt: '$ solar.load(modules)', output: `Loading ${PROJECTS.length} projects, ${SKILLS.length} skill orbits, ${ACHIEVEMENTS.length} milestones...` },
+  { prompt: '$ solar.compile("event-horizon")', output: '[core ★] Compiling frontend universe...\n 2 years of orbital experience locked' },
+  { prompt: '$ solar.launch()', output: 'Ignition sequence complete.\nEntering the cosmos... ✦' },
 ]

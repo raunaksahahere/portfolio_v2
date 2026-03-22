@@ -10,6 +10,7 @@ import AboutPanel from './components/AboutPanel'
 import GitHubCommit from './components/GitHubCommit'
 import Footer from './components/Footer'
 import CustomCursor from './components/CustomCursor'
+import AboutMeSection from './components/AboutMeSection'
 import { PROJECTS, SKILLS, PROFILE, ACHIEVEMENTS, CONTACTS } from './data'
 
 export default function App() {
@@ -139,7 +140,10 @@ export default function App() {
 
           <div className="section-divider" />
 
-          {/* ── SECTION 2: Tech Stack ── */}
+          {/* ── SECTION 1.5: About Me ── */}
+          <AboutMeSection />
+
+          <div className="section-divider" />
           <section className="page__section scroll-section" id="skills">
             <div className="section-container">
               <div className="section-label">TECH STACK</div>

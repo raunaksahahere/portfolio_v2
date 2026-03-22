@@ -2,6 +2,7 @@ import { useRef, useMemo, useState, useEffect } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Stars, Html } from '@react-three/drei'
 import * as THREE from 'three'
+import AmongUsCharacter from './three/AmongUsCharacter'
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false)
@@ -14,7 +15,7 @@ function useIsMobile() {
   return isMobile
 }
 
-/* ── Particles floating in space ── */
+/* ── Particles floating in space — gold, cyan, pink, white ── */
 function ParticleField({ isMobile }) {
   const count = isMobile ? 800 : 2500
   const ref = useRef()
@@ -22,15 +23,16 @@ function ParticleField({ isMobile }) {
   const [positions, colors] = useMemo(() => {
     const pos = new Float32Array(count * 3)
     const col = new Float32Array(count * 3)
-    const cyan = new THREE.Color('#00f5ff')
-    const magenta = new THREE.Color('#ff00c8')
-    const white = new THREE.Color('#ffffff')
+    const gold = new THREE.Color('#FFD700')
+    const cyan = new THREE.Color('#00f1fd')
+    const pink = new THREE.Color('#ff7dee')
+    const white = new THREE.Color('#f7f5fd')
     for (let i = 0; i < count; i++) {
       pos[i * 3] = (Math.random() - 0.5) * 40
       pos[i * 3 + 1] = (Math.random() - 0.5) * 20
       pos[i * 3 + 2] = (Math.random() - 0.5) * 40
       const t = Math.random()
-      const c = t < 0.2 ? cyan : t < 0.35 ? magenta : white
+      const c = t < 0.2 ? gold : t < 0.35 ? cyan : t < 0.45 ? pink : white
       col[i * 3] = c.r
       col[i * 3 + 1] = c.g
       col[i * 3 + 2] = c.b
@@ -53,37 +55,23 @@ function ParticleField({ isMobile }) {
   )
 }
 
-/* ── Wireframe Core — center piece ── */
-function WireframeCore() {
-  const meshRef = useRef()
-  const glowRef = useRef()
+/* ── Center Among Us — replaces the Sun ── */
+function CenterAmongUs() {
+  const groupRef = useRef()
 
   useFrame((state) => {
     const t = state.clock.elapsedTime
-    if (meshRef.current) {
-      meshRef.current.rotation.y = t * 0.1
-      meshRef.current.rotation.x = Math.sin(t * 0.05) * 0.1
-    }
-    if (glowRef.current) {
-      glowRef.current.scale.setScalar(1 + Math.sin(t * 2) * 0.05)
+    if (groupRef.current) {
+      groupRef.current.rotation.y = t * 0.15
+      groupRef.current.position.y = Math.sin(t * 0.6) * 0.3
     }
   })
 
   return (
-    <group position={[0, 0, 0]}>
-      <mesh ref={meshRef}>
-        <icosahedronGeometry args={[1.8, 2]} />
-        <meshStandardMaterial color="#00f5ff" wireframe transparent opacity={0.25} emissive="#00f5ff" emissiveIntensity={0.3} />
-      </mesh>
-      <mesh ref={glowRef}>
-        <icosahedronGeometry args={[2.1, 1]} />
-        <meshBasicMaterial color="#00f5ff" wireframe transparent opacity={0.06} />
-      </mesh>
-      <mesh>
-        <icosahedronGeometry args={[2.4, 0]} />
-        <meshBasicMaterial color="#ff00c8" wireframe transparent opacity={0.03} />
-      </mesh>
-      <pointLight color="#00f5ff" intensity={2} distance={15} />
+    <group ref={groupRef} scale={1.8} position={[0, 0, 0]}>
+      <AmongUsCharacter color="#DC143C" emissiveIntensity={0.8} />
+      <pointLight color="#DC143C" intensity={4} distance={30} />
+      <pointLight color="#00f1fd" intensity={0.5} distance={20} />
     </group>
   )
 }
@@ -102,7 +90,7 @@ function OrbitRing({ radius, speed, color, opacity, tilt = 0 }) {
   )
 }
 
-/* ── Project Planet — orbits the center ── */
+/* ── Project Planet — orbits the sun ── */
 function ProjectPlanet({ project, orbitRadius, orbitSpeed, startAngle, orbitTilt, bobSpeed, bobHeight, onProjectClick }) {
   const groupRef = useRef()
   const meshRef = useRef()
@@ -111,20 +99,16 @@ function ProjectPlanet({ project, orbitRadius, orbitSpeed, startAngle, orbitTilt
   useFrame((state) => {
     const t = state.clock.elapsedTime * orbitSpeed + startAngle
     if (groupRef.current) {
-      // Elliptical orbit with tilt
       const x = Math.cos(t) * orbitRadius
       const z = Math.sin(t) * orbitRadius * 0.85
-      // Apply orbit tilt rotation
-      groupRef.current.position.x = x * Math.cos(orbitTilt) - 0 * Math.sin(orbitTilt)
+      groupRef.current.position.x = x * Math.cos(orbitTilt)
       groupRef.current.position.z = z
-      // Bobbing up and down
       groupRef.current.position.y = Math.sin(state.clock.elapsedTime * bobSpeed + startAngle * 3) * bobHeight
         + Math.cos(state.clock.elapsedTime * bobSpeed * 0.7 + startAngle) * bobHeight * 0.4
     }
     if (meshRef.current) {
       meshRef.current.rotation.y += 0.012
       meshRef.current.rotation.x += 0.006
-      // Slight wobble
       meshRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.8 + startAngle) * 0.1
     }
   })
@@ -155,11 +139,12 @@ function ProjectPlanet({ project, orbitRadius, orbitSpeed, startAngle, orbitTilt
         {geo === 'torus' && <torusGeometry args={[0.5, 0.2, 16, 32]} />}
         <meshStandardMaterial
           color={project.color}
-          wireframe
           transparent
-          opacity={0.7}
+          opacity={0.85}
           emissive={project.color}
-          emissiveIntensity={0.2}
+          emissiveIntensity={0.5}
+          roughness={0.4}
+          metalness={0.3}
         />
       </mesh>
       <Html position={[0, 1.2, 0]} center distanceFactor={12} style={{ pointerEvents: 'none' }}>
@@ -195,44 +180,78 @@ function CameraRig({ scrollY = 0 }) {
   return null
 }
 
+/* ── Roaming Among Us ── */
+function RoamingAmongUs({ orbitRadius, orbitSpeed, startAngle, scale, color, yOffset }) {
+  const groupRef = useRef()
+
+  useFrame((state) => {
+    const t = state.clock.elapsedTime * orbitSpeed + startAngle
+    if (groupRef.current) {
+      groupRef.current.position.x = Math.cos(t) * orbitRadius
+      groupRef.current.position.z = Math.sin(t) * orbitRadius * 0.9
+      groupRef.current.position.y = yOffset + Math.sin(state.clock.elapsedTime * 0.5 + startAngle) * 0.4
+      groupRef.current.rotation.y = -t + Math.PI
+    }
+  })
+
+  return (
+    <group ref={groupRef} scale={scale}>
+      <AmongUsCharacter color={color} emissiveIntensity={0.3} />
+    </group>
+  )
+}
+
 /* ── Inner scene ── */
 function SceneInner({ projects, onProjectClick, scrollY, isMobile }) {
+  const orbitConfigs = useMemo(() => {
+    return projects.map((_, i) => ({
+      orbitRadius: 4 + i * 1.5,
+      orbitSpeed: 0.15 - i * 0.02,
+      startAngle: (i * Math.PI * 2) / projects.length,
+      orbitTilt: (Math.random() - 0.5) * 0.2,
+      bobSpeed: 0.4 + Math.random() * 0.3,
+      bobHeight: 0.2 + Math.random() * 0.2,
+    }))
+  }, [projects.length])
+
   return (
     <>
       <ambientLight intensity={0.15} />
-      <directionalLight position={[20, 20, 10]} intensity={0.3} color="#ffffff" />
+      <directionalLight position={[20, 20, 10]} intensity={0.3} color="#ffe792" />
 
       <ParticleField isMobile={isMobile} />
       <Stars radius={40} depth={30} count={isMobile ? 1500 : 4000} factor={3} saturation={0} fade speed={0.3} />
 
-      <WireframeCore />
+      {/* Orbit rings */}
+      {projects.map((_, i) => (
+        <OrbitRing
+          key={`ring-${i}`}
+          radius={orbitConfigs[i].orbitRadius}
+          speed={0.02}
+          color="#FFD700"
+          opacity={0.15}
+          tilt={orbitConfigs[i].orbitTilt}
+        />
+      ))}
 
-      <OrbitRing radius={4} speed={0.05} color="#00f5ff" opacity={0.08} tilt={0.05} />
-      <OrbitRing radius={6.5} speed={-0.03} color="#ff00c8" opacity={0.06} tilt={-0.03} />
-      <OrbitRing radius={8.5} speed={0.02} color="#a855f7" opacity={0.04} tilt={0.04} />
-      <OrbitRing radius={10} speed={-0.015} color="#22c55e" opacity={0.03} tilt={-0.02} />
+      {/* Project planets */}
+      {projects.map((project, i) => (
+        <ProjectPlanet
+          key={project.id}
+          project={project}
+          orbitRadius={orbitConfigs[i].orbitRadius}
+          orbitSpeed={orbitConfigs[i].orbitSpeed}
+          startAngle={orbitConfigs[i].startAngle}
+          orbitTilt={orbitConfigs[i].orbitTilt}
+          bobSpeed={orbitConfigs[i].bobSpeed}
+          bobHeight={orbitConfigs[i].bobHeight}
+          onProjectClick={onProjectClick}
+        />
+      ))}
 
-      {projects.map((p, i) => {
-        const orbitRadius = 6 + i * 1.5
-        const orbitSpeed = (0.15 + Math.sin(i * 1.7) * 0.03) / (i * 0.4 + 1)
-        const startAngle = (i / projects.length) * Math.PI * 2
-        const orbitTilt = (i % 2 === 0 ? 1 : -1) * (0.02 + i * 0.01)
-        const bobSpeed = 0.3 + i * 0.05
-        const bobHeight = 0.2 + i * 0.03
-        return (
-          <ProjectPlanet
-            key={p.id}
-            project={p}
-            orbitRadius={orbitRadius}
-            orbitSpeed={orbitSpeed}
-            startAngle={startAngle}
-            orbitTilt={orbitTilt}
-            bobSpeed={bobSpeed}
-            bobHeight={bobHeight}
-            onProjectClick={onProjectClick}
-          />
-        )
-      })}
+      <CenterAmongUs />
+      <RoamingAmongUs orbitRadius={5} orbitSpeed={0.12} startAngle={0} scale={0.35} color="#00f1fd" yOffset={1} />
+      <RoamingAmongUs orbitRadius={9} orbitSpeed={-0.08} startAngle={2.1} scale={0.3} color="#ff7dee" yOffset={-0.5} />
 
       <CameraRig scrollY={scrollY} />
     </>
@@ -244,12 +263,12 @@ export default function Scene3D({ projects, onProjectClick, scrollY = 0 }) {
   const isMobile = useIsMobile()
 
   return (
-    <div className="canvas-container" role="img" aria-label="3D interactive scene">
+    <div className="canvas-container" role="img" aria-label="3D interactive solar system">
       <Canvas
         camera={{ position: [0, 5, 14], fov: 60 }}
         gl={{ antialias: !isMobile, alpha: true }}
         dpr={isMobile ? 1 : [1, 2]}
-        style={{ background: '#050505' }}
+        style={{ background: '#0d0e13' }}
         tabIndex={-1}
       >
         <SceneInner projects={projects} onProjectClick={onProjectClick} scrollY={scrollY} isMobile={isMobile} />

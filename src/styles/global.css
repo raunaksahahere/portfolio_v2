@@ -4,26 +4,34 @@
    ══════════════════════════════════════════════ */
 
 :root {
-  --bg: #050505;
-  --bg-elevated: #0a0a0a;
+  --bg: #0d0e13;
+  --bg-elevated: #121319;
   --surface: rgba(255, 255, 255, 0.03);
   --surface-hover: rgba(255, 255, 255, 0.06);
-  --border: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(255, 255, 255, 0.15);
-  --text: #f0f0f0;
-  --text-dim: #888;
-  --text-muted: #555;
-  --cyan: #00f5ff;
-  --magenta: #ff00c8;
+  --surface-container: #181920;
+  --surface-high: #1e1f26;
+  --surface-highest: #24252d;
+  --border: rgba(255, 215, 0, 0.08);
+  --border-hover: rgba(255, 215, 0, 0.2);
+  --text: #f7f5fd;
+  --text-dim: #abaab1;
+  --text-muted: #75757b;
+  --cyan: #00f1fd;
+  --gold: #FFD700;
+  --gold-dim: #efc900;
+  --gold-soft: #ffe792;
+  --magenta: #ff7dee;
+  --pink: #ff64ef;
   --purple: #a855f7;
   --green: #22c55e;
-  --terminal-green: #00ff41;
+  --terminal-green: #FFD700;
   --font-body: 'Space Grotesk', -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-  --glass: rgba(10, 10, 10, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glow-cyan: 0 0 20px rgba(0, 245, 255, 0.3);
-  --glow-magenta: 0 0 20px rgba(255, 0, 200, 0.3);
+  --glass: rgba(13, 14, 19, 0.75);
+  --glass-border: rgba(255, 215, 0, 0.1);
+  --glow-cyan: 0 0 20px rgba(0, 241, 253, 0.3);
+  --glow-gold: 0 0 20px rgba(255, 215, 0, 0.3);
+  --glow-magenta: 0 0 20px rgba(255, 125, 238, 0.3);
 }
 
 *, *::before, *::after {
@@ -96,8 +104,8 @@ button {
     0deg,
     transparent,
     transparent 2px,
-    rgba(0, 255, 65, 0.015) 2px,
-    rgba(0, 255, 65, 0.015) 4px
+    rgba(255, 215, 0, 0.015) 2px,
+    rgba(255, 215, 0, 0.015) 4px
   );
   pointer-events: none;
   z-index: 1;
@@ -119,7 +127,7 @@ button {
 }
 
 .loader__prompt {
-  color: var(--cyan);
+  color: var(--gold);
   font-weight: 500;
 }
 
@@ -133,7 +141,7 @@ button {
   display: inline-block;
   width: 8px;
   height: 1.1em;
-  background: var(--terminal-green);
+  background: var(--gold);
   margin-left: 4px;
   vertical-align: text-bottom;
   animation: blink 0.8s step-end infinite;
@@ -155,7 +163,7 @@ button {
 .loader__progress-bar {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--cyan), var(--magenta));
+  background: linear-gradient(90deg, var(--gold), var(--cyan));
   border-radius: 1px;
   transition: width 0.3s ease;
 }
@@ -211,7 +219,7 @@ button {
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1;
-  background: linear-gradient(135deg, var(--text) 0%, var(--cyan) 50%, var(--magenta) 100%);
+  background: linear-gradient(135deg, var(--gold-soft) 0%, var(--gold) 40%, var(--cyan) 70%, var(--magenta) 100%);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1368,7 +1376,7 @@ button {
 .section-label {
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--cyan);
+  color: var(--gold);
   letter-spacing: 0.25em;
   margin-bottom: 0.6rem;
 }
@@ -1394,11 +1402,45 @@ button {
   border: 1px solid var(--glass-border);
   border-radius: 12px;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Code-editor dots header */
+.skill-card::before {
+  content: '● ● ●';
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  font-size: 0.5rem;
+  letter-spacing: 4px;
+  background: linear-gradient(90deg, #ff5f56, #ffbd2e, #27c93f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0.7;
+}
+
+/* Holographic scan hover */
+.skill-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 241, 253, 0.04), transparent);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.skill-card:hover::after {
+  left: 100%;
 }
 
 .skill-card:hover {
-  border-color: var(--cyan);
-  box-shadow: 0 8px 30px rgba(0,245,255,0.1);
+  border-color: var(--gold);
+  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.08);
 }
 
 .skill-card__icon {
@@ -1424,14 +1466,14 @@ button {
   font-size: 0.75rem;
   padding: 4px 10px;
   border-radius: 4px;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 215, 0, 0.04);
   color: var(--text-dim);
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(255, 215, 0, 0.08);
 }
 
 .skill-card:hover .skill-card__tech {
-  color: var(--cyan);
-  border-color: rgba(0,245,255,0.15);
+  color: var(--gold-soft);
+  border-color: rgba(255, 215, 0, 0.2);
 }
 
 /* ── Projects Grid ── */
@@ -1449,11 +1491,30 @@ button {
   border-radius: 14px;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Holographic scan sweep on project cards */
+.project-grid-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.03), transparent);
+  transition: left 0.8s ease;
+  pointer-events: none;
+}
+
+.project-grid-card:hover::after {
+  left: 100%;
 }
 
 .project-grid-card:hover {
-  border-color: var(--accent, var(--cyan));
-  box-shadow: 0 12px 40px rgba(0,245,255,0.1);
+  border-color: var(--accent, var(--gold));
+  box-shadow: 0 12px 40px rgba(255, 215, 0, 0.08);
 }
 
 .project-grid-card__accent {
@@ -1942,7 +2003,7 @@ button {
 .hero__tagline {
   font-family: var(--font-mono);
   font-size: clamp(0.8rem, 1.5vw, 1rem);
-  color: var(--cyan);
+  color: var(--gold-soft);
   margin-top: 1rem;
   letter-spacing: 0.05em;
   opacity: 0;
@@ -1951,7 +2012,7 @@ button {
 
 .hero__tagline-cursor {
   animation: blink 1s step-end infinite;
-  color: var(--cyan);
+  color: var(--gold);
   font-weight: 300;
 }
 
@@ -1983,8 +2044,8 @@ button {
   font-family: var(--font-mono);
   font-size: clamp(1.2rem, 2.5vw, 1.8rem);
   font-weight: 700;
-  color: var(--cyan);
-  text-shadow: var(--glow-cyan);
+  color: var(--gold);
+  text-shadow: var(--glow-gold);
 }
 
 .hero__stat-label {
@@ -2007,9 +2068,9 @@ button {
   background: linear-gradient(
     90deg,
     transparent,
-    var(--cyan) 20%,
-    var(--magenta) 50%,
-    var(--cyan) 80%,
+    var(--gold) 20%,
+    var(--cyan) 50%,
+    var(--gold) 80%,
     transparent
   );
   opacity: 0.3;
@@ -2117,7 +2178,560 @@ button {
   text-align: right;
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: var(--cyan);
+  color: var(--gold);
   margin-top: 6px;
   letter-spacing: 0.1em;
+}
+
+/* ══════════════════════════════════════════════
+   ABOUT ME SECTION — Celestial Command Bio
+   ══════════════════════════════════════════════ */
+
+.aboutme-section {
+  position: relative;
+}
+
+/* Atmospheric glow behind section */
+.aboutme-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.04) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.aboutme-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 3rem;
+  align-items: end;
+}
+
+/* ── Photo Column ── */
+.aboutme-photos {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.aboutme-photo-frame {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 215, 0, 0.25);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.1), inset 0 0 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.aboutme-photo-frame:hover {
+  border-color: rgba(255, 215, 0, 0.5);
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.15), 0 20px 60px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px);
+}
+
+.aboutme-photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.9) contrast(1.05);
+  transition: filter 0.4s;
+}
+
+.aboutme-photo-frame:hover .aboutme-photo {
+  filter: brightness(1) contrast(1.1);
+}
+
+.aboutme-photo-frame--tall .aboutme-photo {
+  aspect-ratio: 3 / 4;
+}
+
+.aboutme-photo-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(13, 14, 19, 0.7) 100%);
+  pointer-events: none;
+}
+
+/* ── Bio Panel — Terminal Style ── */
+.aboutme-bio-panel {
+  background: rgba(26, 27, 33, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 215, 0, 0.12);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Holographic scan sweep */
+.aboutme-bio-panel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 241, 253, 0.03), transparent);
+  animation: aboutme-scan 6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes aboutme-scan {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+.aboutme-terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: rgba(41, 42, 47, 0.8);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.08);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot--red { background: #ff5f56; }
+.dot--yellow { background: #ffbd2e; }
+.dot--green { background: #27c93f; }
+
+.aboutme-terminal-title {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-left: 8px;
+  letter-spacing: 0.05em;
+}
+
+.aboutme-bio-content {
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutme-name {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--gold-soft) 0%, var(--gold) 40%, var(--cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.aboutme-title {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--gold-dim);
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+.aboutme-bio-text {
+  font-size: 1rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+  margin-bottom: 1.8rem;
+  font-family: var(--font-mono);
+}
+
+/* ── Stats Grid ── */
+.aboutme-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+
+.aboutme-stat {
+  padding: 1rem;
+  background: rgba(255, 215, 0, 0.03);
+  border: 1px solid rgba(255, 215, 0, 0.08);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color 0.3s;
+}
+
+.aboutme-stat:hover {
+  border-color: rgba(255, 215, 0, 0.25);
+}
+
+.aboutme-stat__label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.aboutme-stat__value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ── Skill Tags ── */
+.aboutme-skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 1.8rem;
+}
+
+.aboutme-skill-tag {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  border-radius: 4px;
+  color: var(--gold-soft);
+  background: rgba(255, 215, 0, 0.04);
+  transition: all 0.3s;
+  cursor: default;
+}
+
+.aboutme-skill-tag:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.1);
+  background: rgba(255, 215, 0, 0.08);
+}
+
+/* ── Inline Photo in Bio Panel ── */
+.aboutme-inline-photo {
+  flex: none;
+  height: 180px;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  position: relative;
+}
+
+.aboutme-inline-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.9) contrast(1.05);
+  transition: filter 0.4s, transform 0.4s;
+}
+
+.aboutme-inline-photo:hover img {
+  filter: brightness(1) contrast(1.1);
+  transform: scale(1.02);
+}
+
+/* ── Fun Facts ── */
+.aboutme-funfacts {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.aboutme-funfacts__label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+}
+
+.aboutme-funfacts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+}
+
+.aboutme-funfact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(255, 215, 0, 0.03);
+  border: 1px solid rgba(255, 215, 0, 0.08);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.aboutme-funfact:hover {
+  background: rgba(255, 215, 0, 0.06);
+  border-color: rgba(255, 215, 0, 0.15);
+  transform: translateX(4px);
+}
+
+.aboutme-funfact__icon {
+  font-size: 1.2rem;
+}
+
+.aboutme-funfact__text {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+/* ── Achievement Highlights ── */
+.aboutme-highlights {
+  border-top: 1px solid rgba(255, 215, 0, 0.06);
+  padding-top: 1.2rem;
+  margin-top: auto;
+}
+
+.aboutme-highlights__label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+}
+
+.aboutme-highlight {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 1rem;
+  color: var(--text-dim);
+  padding: 8px 0;
+}
+
+.aboutme-highlight span:first-child {
+  font-size: 1.2rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .aboutme-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .aboutme-photos {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .aboutme-photo-frame {
+    flex: 1;
+  }
+
+  .aboutme-photo {
+    aspect-ratio: 1 / 1;
+  }
+
+  .aboutme-photo-frame--tall .aboutme-photo {
+    aspect-ratio: 1 / 1;
+  }
+
+  .aboutme-bio-panel {
+    margin: 0;
+    height: auto;
+  }
+
+  .aboutme-bio-content {
+    padding: 1.5rem;
+  }
+
+  .aboutme-name {
+    font-size: 1.8rem;
+  }
+
+  .aboutme-title {
+    font-size: 0.9rem;
+  }
+
+  .aboutme-bio-text {
+    font-size: 0.9rem;
+  }
+
+  .aboutme-stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+
+  .aboutme-stat {
+    padding: 0.8rem;
+  }
+
+  .aboutme-stat__label {
+    font-size: 0.65rem;
+  }
+
+  .aboutme-stat__value {
+    font-size: 0.95rem;
+    word-break: break-word;
+  }
+
+  .aboutme-skill-tags {
+    gap: 8px;
+  }
+
+  .aboutme-skill-tag {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+
+  .aboutme-inline-photo {
+    height: 150px;
+    margin-bottom: 1.2rem;
+  }
+
+  .aboutme-highlight {
+    font-size: 0.9rem;
+  }
+
+  .aboutme-highlights__label {
+    font-size: 0.7rem;
+  }
+
+  .aboutme-funfacts-grid {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .aboutme-funfact {
+    padding: 8px 12px;
+  }
+
+  .aboutme-funfact__text {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutme-photos {
+    flex-direction: column;
+  }
+
+  .aboutme-photo {
+    aspect-ratio: 4 / 3;
+  }
+
+  .aboutme-photo-frame--tall .aboutme-photo {
+    aspect-ratio: 3 / 4;
+  }
+
+  .aboutme-name {
+    font-size: 1.6rem;
+  }
+
+  .aboutme-title {
+    font-size: 0.85rem;
+  }
+
+  .aboutme-bio-panel {
+    margin: 0;
+    border-radius: 8px;
+  }
+
+  .aboutme-bio-content {
+    padding: 1.2rem;
+  }
+
+  .aboutme-bio-text {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+  }
+
+  .aboutme-stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+
+  .aboutme-stat {
+    padding: 0.7rem;
+  }
+
+  .aboutme-stat__label {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+  }
+
+  .aboutme-stat__value {
+    font-size: 0.85rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .aboutme-skill-tags {
+    gap: 6px;
+    margin-bottom: 1.2rem;
+  }
+
+  .aboutme-skill-tag {
+    font-size: 0.7rem;
+    padding: 5px 10px;
+  }
+
+  .aboutme-inline-photo {
+    height: 120px;
+    margin-bottom: 1rem;
+  }
+
+  .aboutme-highlights {
+    padding-top: 0.8rem;
+  }
+
+  .aboutme-highlights__label {
+    font-size: 0.65rem;
+  }
+
+  .aboutme-highlight {
+    font-size: 0.85rem;
+    padding: 5px 0;
+  }
+
+  .aboutme-highlight span:first-child {
+    font-size: 1rem;
+  }
+
+  .aboutme-terminal-header {
+    padding: 10px 12px;
+  }
+
+  .aboutme-terminal-title {
+    font-size: 0.75rem;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .aboutme-funfacts {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .aboutme-funfacts__label {
+    font-size: 0.7rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .aboutme-funfact__icon {
+    font-size: 1rem;
+  }
+
+  .aboutme-funfact__text {
+    font-size: 0.8rem;
+  }
 }

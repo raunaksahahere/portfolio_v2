@@ -19,7 +19,7 @@ export default function Footer() {
         </div>
         <div className="footer__right">
           <div className="footer__copy">© {new Date().getFullYear()} {PROFILE.name}</div>
-          <div className="footer__built">Built with React + Three.js</div>
+          <div className="footer__built">Built with React</div>
         </div>
       </div>
     </footer>
